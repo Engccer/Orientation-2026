@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1학년 영어 수업 안내 - 신명중학교</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-dark: #1a1e2e;
+  --bg-card: #232840;
+  --mint: #5de6c8;
+  --gold: #f5c842;
+  --coral: #ff6b6b;
+  --lavender: #a78bfa;
+  --sky: #60a5fa;
+  --text-primary: #f0f0f5;
+  --text-secondary: #c0c4d8;
+  --slide-transition: 0.5s;
+  --green: #4ade80;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Slide container */
+.slide-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 6rem;
+  opacity: 0;
+  transform: translateX(60px);
+  pointer-events: none;
+  transition: opacity var(--slide-transition) ease, transform var(--slide-transition) ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.slide.exit-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* Slide backgrounds */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+.slide:nth-child(odd)::before {
+  background: linear-gradient(135deg, #1a1e2e 0%, #1e2740 50%, #1a2535 100%);
+}
+.slide:nth-child(even)::before {
+  background: linear-gradient(135deg, #1e2235 0%, #22284a 50%, #1a1e35 100%);
+}
+
+/* Typography */
+h1:focus, h2:focus { outline: none; }
+
+h2 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+h2 .accent { color: var(--mint); }
+h2 .accent-gold { color: var(--gold); }
+h2 .accent-coral { color: var(--coral); }
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Content blocks */
+.content-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.2rem;
+  padding: 2rem 2.5rem;
+  max-width: 900px;
+  width: 100%;
+  backdrop-filter: blur(8px);
+}
+
+.content-box + .content-box { margin-top: 1.2rem; }
+
+.content-box p, .content-box li {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.content-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content-box ul li {
+  padding: 0.4rem 0;
+  padding-left: 1.8rem;
+  position: relative;
+}
+
+.content-box ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+/* Grid layouts */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.2rem;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Tags / Badges */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag-mint { background: rgba(93,230,200,0.15); color: var(--mint); }
+.tag-gold { background: rgba(245,200,66,0.15); color: var(--gold); }
+.tag-coral { background: rgba(255,107,107,0.15); color: var(--coral); }
+.tag-lavender { background: rgba(167,139,250,0.15); color: var(--lavender); }
+.tag-sky { background: rgba(96,165,250,0.15); color: var(--sky); }
+
+/* Performance assessment card */
+.assess-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.assess-card .assess-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.assess-card .assess-detail {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.assess-card .assess-score {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-top: 0.8rem;
+}
+
+/* Commandment list */
+.commandment {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 0.8rem 0;
+}
+
+.commandment-num {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--bg-dark);
+}
+
+.commandment-text {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  padding-top: 0.2rem;
+}
+
+.commandment-en {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+/* Big number */
+.big-number {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Donut chart (CSS) */
+.donut-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.donut {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-inner {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.donut-label { font-size: 0.9rem; color: var(--text-secondary); }
+.donut-value { font-size: 1.8rem; font-weight: 900; }
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* Highlight number with border */
+.highlight-box {
+  border: 2px solid var(--mint);
+  border-radius: 1rem;
+  padding: 1.5rem 2.5rem;
+  text-align: center;
+  background: rgba(93,230,200,0.05);
+}
+
+/* Audio play button */
+.audio-btn {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  outline-offset: 3px;
+  padding: 0;
+  margin-left: auto;
+}
+
+.audio-btn:hover {
+  background: rgba(93,230,200,0.15);
+  border-color: var(--mint);
+}
+
+.audio-btn:active { transform: scale(0.92); }
+.audio-btn:focus-visible { outline: 2px solid var(--mint); }
+
+.audio-btn.playing {
+  background: rgba(93,230,200,0.2);
+  border-color: var(--mint);
+  color: var(--mint);
+}
+
+/* Statement cards for the game */
+.statement-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 850px;
+  width: 100%;
+}
+
+.statement-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 1.2rem;
+  padding: 1.3rem 1.8rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.statement-label {
+  flex-shrink: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--bg-dark);
+}
+
+.statement-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.statement-text {
+  font-size: 1.45rem;
+  line-height: 1.5;
+}
+
+.statement-ko {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* Answer reveal states */
+.statement-card.truth {
+  border-color: var(--green);
+  background: rgba(74,222,128,0.08);
+}
+
+.statement-card.truth .statement-label {
+  background: var(--green);
+}
+
+.statement-card.lie {
+  border-color: var(--coral);
+  background: rgba(255,107,107,0.1);
+}
+
+.statement-card.lie .statement-label {
+  background: var(--coral);
+}
+
+.answer-badge {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+}
+
+.answer-badge.truth-badge {
+  background: rgba(74,222,128,0.15);
+  color: var(--green);
+}
+
+.answer-badge.lie-badge {
+  background: rgba(255,107,107,0.15);
+  color: var(--coral);
+}
+
+.explanation {
+  margin-top: 1.5rem;
+  max-width: 850px;
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  padding: 1.2rem 1.8rem;
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.explanation strong {
+  color: var(--gold);
+}
+
+/* Question number badge */
+.q-number {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--mint), var(--sky));
+  color: var(--bg-dark);
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 0.3rem 1.2rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Student activity section */
+.activity-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1rem 0;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--bg-dark);
+}
+
+.step-text {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  padding-top: 0.2rem;
+}
+
+.step-en {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+/* Title slide special */
+.title-slide h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--mint), var(--sky));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-slide .teacher-name,
+.title-slide .game-subtitle {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.title-slide .school-name {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+
+/* Closing slide */
+.closing-msg {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.6;
+  background: linear-gradient(135deg, var(--mint), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navigation */
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(26,30,46,0.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  z-index: 100;
+}
+
+.nav-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-primary);
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  outline-offset: 3px;
+}
+
+.nav-btn:hover { background: rgba(255,255,255,0.14); }
+.nav-btn:active { transform: scale(0.97); }
+.nav-btn:focus-visible { outline: 2px solid var(--mint); }
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.nav-btn:disabled:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.slide-counter {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mint), var(--gold));
+  transition: width 0.4s ease;
+  z-index: 100;
+}
+
+/* Aria live region */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .slide { padding: 3rem 2rem; }
+  h2 { font-size: 2rem; }
+  .title-slide h1 { font-size: 2.8rem; }
+  .two-col, .three-col { grid-template-columns: 1fr; }
+  .content-box p, .content-box li { font-size: 1.2rem; }
+  .donut-wrapper { flex-direction: column; gap: 1.5rem; }
+  .statement-text { font-size: 1.2rem; }
+  .statement-card { padding: 1.2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div aria-live="polite" class="sr-only" id="slideAnnounce"></div>
+
+<main>
+<div class="slide-wrapper" id="slideWrapper">
+
+  <!-- ===== PART 1: 수업 안내 (Slides 1-11) ===== -->
+
+  <!-- Slide 1: Title -->
+  <section class="slide title-slide active" role="region" aria-label="타이틀 슬라이드">
+    <h1 tabindex="-1">1학년 영어 수업 안내</h1>
+    <p class="teacher-name">김헌용 선생님</p>
+    <p class="school-name">신명중학교 | 2026학년도</p>
+  </section>
+
+  <!-- Slide 2: Textbook -->
+  <section class="slide" role="region" aria-label="교과서 소개">
+    <h2 tabindex="-1"><span class="accent">교과서</span> 소개</h2>
+    <div class="content-box" style="text-align:center;">
+      <p style="font-size:2rem; font-weight:700; margin-bottom:0.8rem;">동아출판 윤정미 영어 1</p>
+      <p style="color:var(--text-secondary); font-size:1.3rem;">2022 개정 교육과정</p>
+      <div style="margin-top:1.5rem; display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <span class="tag tag-mint">듣기</span>
+        <span class="tag tag-gold">말하기</span>
+        <span class="tag tag-coral">읽기</span>
+        <span class="tag tag-lavender">쓰기</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Class Hours -->
+  <section class="slide" role="region" aria-label="수업 시수 안내">
+    <h2 tabindex="-1"><span class="accent">수업</span> 시수</h2>
+    <div class="two-col">
+      <div class="highlight-box">
+        <p style="font-size:1.2rem; color:var(--text-secondary); margin-bottom:0.5rem;">1학기</p>
+        <p class="big-number" style="color:var(--mint);">3</p>
+        <p style="font-size:1.3rem; margin-top:0.5rem;">시간 / 주</p>
+      </div>
+      <div class="highlight-box" style="border-color:var(--gold);">
+        <p style="font-size:1.2rem; color:var(--text-secondary); margin-bottom:0.5rem;">2학기</p>
+        <p class="big-number" style="color:var(--gold);">2</p>
+        <p style="font-size:1.3rem; margin-top:0.5rem;">시간 / 주</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Grading System -->
+  <section class="slide" role="region" aria-label="성적 산출 방식">
+    <h2 tabindex="-1">성적은 <span class="accent-gold">어떻게?</span></h2>
+    <div class="content-box">
+      <ul>
+        <li><strong>성취도 5단계</strong>로 평가합니다
+          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-top:0.4rem;">
+            <span class="tag tag-mint">A</span>
+            <span class="tag tag-sky">B</span>
+            <span class="tag tag-gold">C</span>
+            <span class="tag tag-lavender">D</span>
+            <span class="tag tag-coral">E</span>
+          </div>
+        </li>
+        <li><strong>정기시험</strong>(기말고사) + <strong>수행평가</strong>로 구성</li>
+        <li>1학기 <strong>중간고사는 없습니다</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 5: 1st Semester Evaluation -->
+  <section class="slide" role="region" aria-label="1학기 평가 구성">
+    <h2 tabindex="-1"><span class="accent">1학기</span> 평가 구성</h2>
+    <div class="donut-wrapper">
+      <div class="donut" role="img" aria-label="평가 구성: 기말고사 50%, 수행평가 50%" style="background: conic-gradient(var(--gold) 0% 50%, var(--mint) 50% 100%);">
+        <div class="donut-inner">
+          <span class="donut-label">총점</span>
+          <span class="donut-value">100</span>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--gold);"></div>
+          <span><strong>기말고사</strong> &mdash; 50점 (50%)</span>
+        </div>
+        <div class="legend-item" style="padding-left:2rem; font-size:1.1rem; color:var(--text-secondary);">
+          선택형 80점(40%) + 서·논술형 20점(10%)
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--mint);"></div>
+          <span><strong>수행평가</strong> &mdash; 50점 (50%)</span>
+        </div>
+        <div class="legend-item" style="padding-left:2rem; font-size:1.1rem; color:var(--text-secondary);">
+          3가지 수행평가 합산
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; color:var(--coral); font-size:1.2rem; text-align:center;">* 중간고사 없음</p>
+  </section>
+
+  <!-- Slide 6: Performance Assessment 1 -->
+  <section class="slide" role="region" aria-label="1학기 수행평가 1: 자기소개 인터뷰">
+    <h2 tabindex="-1">수행평가 ① <span class="accent">자기소개 인터뷰</span></h2>
+    <div class="content-box">
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem;">
+        <span class="tag tag-gold">말하기</span>
+        <span class="tag tag-mint">3월</span>
+        <span class="tag tag-lavender">15점</span>
+      </div>
+      <ul>
+        <li>L1. Happy Together</li>
+        <li>교사가 <strong>5개 질문</strong>을 제시하면 학생이 응답하는 인터뷰</li>
+        <li>자기소개 + 질문 파악 + 어휘·어법 정확성 평가</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 7: Performance Assessment 2 -->
+  <section class="slide" role="region" aria-label="1학기 수행평가 2: 성취경험 글쓰기">
+    <h2 tabindex="-1">수행평가 ② <span class="accent-gold">성취경험 글쓰기</span></h2>
+    <div class="content-box">
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem;">
+        <span class="tag tag-coral">쓰기</span>
+        <span class="tag tag-mint">5월</span>
+        <span class="tag tag-lavender">15점</span>
+      </div>
+      <ul>
+        <li>L3. Let's Be Positive</li>
+        <li>자신의 <strong>성취 경험</strong>을 영어로 글쓰기</li>
+        <li>경험 설명 + 배운 점 표현 + 어휘·어법 정확성 평가</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 8: Performance Assessment 3 -->
+  <section class="slide" role="region" aria-label="1학기 수행평가 3: 여행계획 발표">
+    <h2 tabindex="-1">수행평가 ③ <span class="accent">여행계획 발표</span></h2>
+    <div class="content-box">
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem;">
+        <span class="tag tag-gold">말하기</span>
+        <span class="tag tag-mint">6월</span>
+        <span class="tag tag-lavender">20점</span>
+      </div>
+      <ul>
+        <li>L4. The Joy of Traveling</li>
+        <li>PPT 등 시각 자료를 활용한 <strong>개인 발표</strong> (1분 30초 내외)</li>
+        <li>여행지 정보 + 여행 계획 + 매체 활용·발표 태도 평가</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 9: 2nd Semester Preview -->
+  <section class="slide" role="region" aria-label="2학기 수행평가 미리보기">
+    <h2 tabindex="-1"><span class="accent-gold">2학기</span> 수행평가 미리보기</h2>
+    <div class="three-col">
+      <div class="assess-card">
+        <div class="assess-title" style="color:var(--mint);">생태 보고서</div>
+        <div class="assess-detail">우리동네 환경 문제를<br>영어 보고서로 작성</div>
+        <div style="margin-top:0.8rem;">
+          <span class="tag tag-coral">쓰기</span>
+          <span class="tag tag-mint">9월</span>
+        </div>
+      </div>
+      <div class="assess-card">
+        <div class="assess-title" style="color:var(--gold);">미니 페차쿠차</div>
+        <div class="assess-detail">관심 분야와 장래 희망을<br>슬라이드로 발표</div>
+        <div style="margin-top:0.8rem;">
+          <span class="tag tag-gold">말하기</span>
+          <span class="tag tag-mint">11월</span>
+        </div>
+      </div>
+      <div class="assess-card">
+        <div class="assess-title" style="color:var(--lavender);">스토리텔링</div>
+        <div class="assess-detail">동화를 창의적으로<br>각색하여 발표</div>
+        <div style="margin-top:0.8rem;">
+          <span class="tag tag-gold">말하기</span>
+          <span class="tag tag-mint">12월</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Ten Commandments 1~5 -->
+  <section class="slide" role="region" aria-label="영어 수업 십계명 1번부터 5번">
+    <h2 tabindex="-1">영어 수업 <span class="accent">십계명</span> (1~5)</h2>
+    <div class="content-box" style="max-width:800px;">
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--mint);">1</div>
+        <div>
+          <div class="commandment-text">열린 마음으로 수업에 참여한다.</div>
+          <div class="commandment-en">Be open-minded and speak up.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd01.mp3" aria-label="1번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--gold);">2</div>
+        <div>
+          <div class="commandment-text">존중하는 마음으로 선생님과 친구들과 대화한다.</div>
+          <div class="commandment-en">Talk respectfully to your teacher and classmates.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd02.mp3" aria-label="2번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--sky);">3</div>
+        <div>
+          <div class="commandment-text">의식적으로 행동하고 주의를 기울인다.</div>
+          <div class="commandment-en">Act consciously and pay attention.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd03.mp3" aria-label="3번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--lavender);">4</div>
+        <div>
+          <div class="commandment-text">배우려는 마음으로 새로운 개념과 아이디어를 받아들인다.</div>
+          <div class="commandment-en">Be willing to accept new concepts and ideas.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd04.mp3" aria-label="4번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--coral);">5</div>
+        <div>
+          <div class="commandment-text">실수를 두려워하지 않는다.</div>
+          <div class="commandment-en">Do not be afraid to make mistakes.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd05.mp3" aria-label="5번 영어 듣기">&#9654;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Ten Commandments 6~10 -->
+  <section class="slide" role="region" aria-label="영어 수업 십계명 6번부터 10번">
+    <h2 tabindex="-1">영어 수업 <span class="accent-gold">십계명</span> (6~10)</h2>
+    <div class="content-box" style="max-width:800px;">
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--mint);">6</div>
+        <div>
+          <div class="commandment-text">친구를 비난하지 않는다.</div>
+          <div class="commandment-en">Do not criticize friends.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd06.mp3" aria-label="6번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--gold);">7</div>
+        <div>
+          <div class="commandment-text">친구의 발표에 박수를 친다.</div>
+          <div class="commandment-en">Applaud friends' presentations.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd07.mp3" aria-label="7번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--sky);">8</div>
+        <div>
+          <div class="commandment-text">필기를 하며 주요 내용을 정리한다.</div>
+          <div class="commandment-en">Take notes and summarize the main points of the lesson.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd08.mp3" aria-label="8번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--lavender);">9</div>
+        <div>
+          <div class="commandment-text">궁금한 것이 있으면 선생님과 친구에게 질문한다.</div>
+          <div class="commandment-en">If you have any questions, ask your teacher and friends.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd09.mp3" aria-label="9번 영어 듣기">&#9654;</button>
+      </div>
+      <div class="commandment">
+        <div class="commandment-num" style="background:var(--coral);">10</div>
+        <div>
+          <div class="commandment-text">수업을 즐기며 친구를 도와준다.</div>
+          <div class="commandment-en">Enjoy class and help your friends.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/cmd10.mp3" aria-label="10번 영어 듣기">&#9654;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PART 2: Two Truths and One Lie (Slides 12-20) ===== -->
+
+  <!-- Slide 12: Game Title -->
+  <section class="slide title-slide" role="region" aria-label="게임 타이틀 슬라이드">
+    <h1 tabindex="-1" style="font-size:3.6rem;">Two Truths and One Lie</h1>
+    <p class="game-subtitle">선생님에 대해 알아보자!</p>
+  </section>
+
+  <!-- Slide 13: Rules -->
+  <section class="slide" role="region" aria-label="게임 규칙 설명">
+    <h2 tabindex="-1"><span class="accent">게임</span> 규칙</h2>
+    <div class="content-box">
+      <ul>
+        <li><strong>3개의 문장</strong>이 나옵니다</li>
+        <li>그 중 <strong style="color:var(--green);">2개는 사실(Truth)</strong>이고, <strong style="color:var(--coral);">1개는 거짓(Lie)</strong>입니다</li>
+        <li><strong>거짓말</strong>이 어떤 것인지 맞혀 보세요!</li>
+        <li>A, B, C 중 하나를 골라 <strong>손가락</strong>으로 표시하세요</li>
+      </ul>
+    </div>
+    <div class="content-box" style="margin-top:1.2rem; text-align:center;">
+      <p style="font-size:1.3rem; color:var(--text-secondary);">
+        Which one is the <strong style="color:var(--coral);">lie</strong>?<br>
+        Hold up <strong style="color:var(--mint);">1 finger</strong> for A, <strong style="color:var(--gold);">2 fingers</strong> for B, <strong style="color:var(--lavender);">3 fingers</strong> for C
+      </p>
+    </div>
+  </section>
+
+  <!-- Slide 14: Question 1 -->
+  <section class="slide" role="region" aria-label="문제 1">
+    <span class="q-number">Question 1</span>
+    <h2 tabindex="-1">Which one is the <span class="accent-coral">lie</span>?</h2>
+    <div class="statement-cards">
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--mint);">A</div>
+        <div class="statement-content">
+          <div class="statement-text">I prepare for class using a <strong>braille textbook</strong>.</div>
+          <div class="statement-ko">점자 교과서로 수업을 준비합니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q1a.mp3" aria-label="A 문장 듣기">&#9654;</button>
+      </div>
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--gold);">B</div>
+        <div class="statement-content">
+          <div class="statement-text">I <strong>majored in math</strong> in college.</div>
+          <div class="statement-ko">대학에서 수학을 전공했습니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q1b.mp3" aria-label="B 문장 듣기">&#9654;</button>
+      </div>
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--lavender);">C</div>
+        <div class="statement-content">
+          <div class="statement-text">I have been teaching English <strong>since 2010</strong>.</div>
+          <div class="statement-ko">2010년부터 영어를 가르치고 있습니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q1c.mp3" aria-label="C 문장 듣기">&#9654;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15: Answer 1 -->
+  <section class="slide" role="region" aria-label="문제 1 정답 공개">
+    <span class="q-number">Question 1 — Answer</span>
+    <h2 tabindex="-1">정답은 <span class="accent-coral">B</span>!</h2>
+    <div class="statement-cards">
+      <div class="statement-card truth">
+        <div class="statement-label">A</div>
+        <div class="statement-content">
+          <div class="statement-text">I prepare for class using a <strong>braille textbook</strong>.</div>
+        </div>
+        <span class="answer-badge truth-badge">Truth</span>
+      </div>
+      <div class="statement-card lie">
+        <div class="statement-label">B</div>
+        <div class="statement-content">
+          <div class="statement-text">I <strong>majored in math</strong> in college.</div>
+        </div>
+        <span class="answer-badge lie-badge">Lie!</span>
+      </div>
+      <div class="statement-card truth">
+        <div class="statement-label">C</div>
+        <div class="statement-content">
+          <div class="statement-text">I have been teaching English <strong>since 2010</strong>.</div>
+        </div>
+        <span class="answer-badge truth-badge">Truth</span>
+      </div>
+    </div>
+    <div class="explanation">
+      선생님은 <strong>영어</strong>를 전공했습니다! 시각장애가 있어 점자 교과서를 사용하고, 2010년부터 영어를 가르쳐 온 베테랑 선생님이에요.
+    </div>
+  </section>
+
+  <!-- Slide 16: Question 2 -->
+  <section class="slide" role="region" aria-label="문제 2">
+    <span class="q-number">Question 2</span>
+    <h2 tabindex="-1">Which one is the <span class="accent-coral">lie</span>?</h2>
+    <div class="statement-cards">
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--mint);">A</div>
+        <div class="statement-content">
+          <div class="statement-text">My computer <strong>reads the text on the screen out loud</strong> for me.</div>
+          <div class="statement-ko">컴퓨터가 화면의 글자를 소리로 읽어 줍니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q2a.mp3" aria-label="A 문장 듣기">&#9654;</button>
+      </div>
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--gold);">B</div>
+        <div class="statement-content">
+          <div class="statement-text">I have been working at <strong>Sinmyeong Middle School</strong> for five years.</div>
+          <div class="statement-ko">신명중학교에서 5년째 근무하고 있습니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q2b.mp3" aria-label="B 문장 듣기">&#9654;</button>
+      </div>
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--lavender);">C</div>
+        <div class="statement-content">
+          <div class="statement-text">I <strong>studied abroad in England</strong> for one year.</div>
+          <div class="statement-ko">영국에서 1년간 유학했습니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q2c.mp3" aria-label="C 문장 듣기">&#9654;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 17: Answer 2 -->
+  <section class="slide" role="region" aria-label="문제 2 정답 공개">
+    <span class="q-number">Question 2 — Answer</span>
+    <h2 tabindex="-1">정답은 <span class="accent-coral">C</span>!</h2>
+    <div class="statement-cards">
+      <div class="statement-card truth">
+        <div class="statement-label">A</div>
+        <div class="statement-content">
+          <div class="statement-text">My computer <strong>reads the text on the screen out loud</strong> for me.</div>
+        </div>
+        <span class="answer-badge truth-badge">Truth</span>
+      </div>
+      <div class="statement-card truth">
+        <div class="statement-label">B</div>
+        <div class="statement-content">
+          <div class="statement-text">I have been working at <strong>Sinmyeong Middle School</strong> for five years.</div>
+        </div>
+        <span class="answer-badge truth-badge">Truth</span>
+      </div>
+      <div class="statement-card lie">
+        <div class="statement-label">C</div>
+        <div class="statement-content">
+          <div class="statement-text">I <strong>studied abroad in England</strong> for one year.</div>
+        </div>
+        <span class="answer-badge lie-badge">Lie!</span>
+      </div>
+    </div>
+    <div class="explanation">
+      선생님은 영국 유학 경험이 없습니다! <strong>스크린 리더</strong>라는 프로그램이 화면의 글자를 소리로 읽어 주고, 2022년부터 신명중학교에서 근무하고 있어요.
+    </div>
+  </section>
+
+  <!-- Slide 18: Question 3 -->
+  <section class="slide" role="region" aria-label="문제 3">
+    <span class="q-number">Question 3</span>
+    <h2 tabindex="-1">Which one is the <span class="accent-coral">lie</span>?</h2>
+    <div class="statement-cards">
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--mint);">A</div>
+        <div class="statement-content">
+          <div class="statement-text">I read documents by <strong>touching braille with my fingertips</strong>.</div>
+          <div class="statement-ko">손끝으로 점자를 읽어서 문서를 확인합니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q3a.mp3" aria-label="A 문장 듣기">&#9654;</button>
+      </div>
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--gold);">B</div>
+        <div class="statement-content">
+          <div class="statement-text">I teach both <strong>first and third grade</strong> English.</div>
+          <div class="statement-ko">1학년과 3학년 영어를 모두 가르칩니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q3b.mp3" aria-label="B 문장 듣기">&#9654;</button>
+      </div>
+      <div class="statement-card">
+        <div class="statement-label" style="background:var(--lavender);">C</div>
+        <div class="statement-content">
+          <div class="statement-text">I have also <strong>taught Japanese</strong> before.</div>
+          <div class="statement-ko">일본어도 가르친 적이 있습니다.</div>
+        </div>
+        <button class="audio-btn" data-audio="audio/q3c.mp3" aria-label="C 문장 듣기">&#9654;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 19: Answer 3 -->
+  <section class="slide" role="region" aria-label="문제 3 정답 공개">
+    <span class="q-number">Question 3 — Answer</span>
+    <h2 tabindex="-1">정답은 <span class="accent-coral">C</span>!</h2>
+    <div class="statement-cards">
+      <div class="statement-card truth">
+        <div class="statement-label">A</div>
+        <div class="statement-content">
+          <div class="statement-text">I read documents by <strong>touching braille with my fingertips</strong>.</div>
+        </div>
+        <span class="answer-badge truth-badge">Truth</span>
+      </div>
+      <div class="statement-card truth">
+        <div class="statement-label">B</div>
+        <div class="statement-content">
+          <div class="statement-text">I teach both <strong>first and third grade</strong> English.</div>
+        </div>
+        <span class="answer-badge truth-badge">Truth</span>
+      </div>
+      <div class="statement-card lie">
+        <div class="statement-label">C</div>
+        <div class="statement-content">
+          <div class="statement-text">I have also <strong>taught Japanese</strong> before.</div>
+        </div>
+        <span class="answer-badge lie-badge">Lie!</span>
+      </div>
+    </div>
+    <div class="explanation">
+      선생님은 <strong>영어만</strong> 가르칩니다! 점자정보단말기라는 기기로 점자를 읽고, 1학년과 3학년 영어를 모두 담당하고 있어요.
+    </div>
+  </section>
+
+  <!-- Slide 20: Your Turn -->
+  <section class="slide" role="region" aria-label="학생 참여 활동 안내">
+    <h2 tabindex="-1"><span class="accent-gold">Your Turn!</span> 네 차례!</h2>
+    <div class="content-box" style="max-width:800px;">
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div class="activity-step">
+          <div class="step-num" style="background:var(--mint);">1</div>
+          <div>
+            <div class="step-text">자신에 대한 <strong>사실 2개</strong>와 <strong>거짓말 1개</strong>를 영어로 쓰세요.</div>
+            <div class="step-en">Write 2 truths and 1 lie about yourself in English.</div>
+          </div>
+        </div>
+        <div class="activity-step">
+          <div class="step-num" style="background:var(--gold);">2</div>
+          <div>
+            <div class="step-text">짝에게 3개의 문장을 <strong>읽어 주세요</strong>.</div>
+            <div class="step-en">Read your 3 sentences to your partner.</div>
+          </div>
+        </div>
+        <div class="activity-step">
+          <div class="step-num" style="background:var(--sky);">3</div>
+          <div>
+            <div class="step-text">짝은 어떤 것이 거짓말인지 <strong>맞혀 보세요</strong>!</div>
+            <div class="step-en">Your partner guesses which one is the lie!</div>
+          </div>
+        </div>
+        <div class="activity-step">
+          <div class="step-num" style="background:var(--lavender);">4</div>
+          <div>
+            <div class="step-text"><strong>역할을 바꿔서</strong> 한 번 더!</div>
+            <div class="step-en">Switch roles and do it again!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-box" style="margin-top:1rem; max-width:800px; text-align:center;">
+      <p style="font-size:1.3rem; color:var(--text-secondary);">
+        <strong style="color:var(--mint);">Tip:</strong> "I think <strong style="color:var(--coral);">B</strong> is the lie!" 로 대답해 보세요.
+      </p>
+    </div>
+  </section>
+
+  <!-- Slide 21: Closing -->
+  <section class="slide" role="region" aria-label="마무리 슬라이드">
+    <h2 tabindex="-1" style="font-size:1.8rem; color:var(--text-secondary); margin-bottom:2rem;">2026학년도</h2>
+    <p class="closing-msg">
+      함께 성장하는<br>영어 수업을 만들어요!
+    </p>
+    <p style="margin-top:2.5rem; font-size:1.4rem; color:var(--text-secondary);">Nice to meet you all!</p>
+  </section>
+
+</div>
+</main>
+
+<!-- Navigation -->
+<nav class="nav-bar" aria-label="슬라이드 내비게이션">
+  <button class="nav-btn" id="prevBtn" aria-label="이전 슬라이드">&#9664; 이전</button>
+  <span class="slide-counter" id="slideCounter">1 / 21</span>
+  <button class="nav-btn" id="nextBtn" aria-label="다음 슬라이드">다음 &#9654;</button>
+</nav>
+
+<script>
+(function() {
+  'use strict';
+
+  var slides = document.querySelectorAll('.slide');
+  var totalSlides = slides.length;
+  var current = 0;
+
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var counter = document.getElementById('slideCounter');
+  var progressBar = document.getElementById('progressBar');
+  var announcer = document.getElementById('slideAnnounce');
+
+  // --- Web Audio API sound effects ---
+  var audioCtx = null;
+  function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+
+  function playTone(startFreq, endFreq, duration) {
+    try {
+      var ctx = getAudioCtx();
+      if (ctx.state === 'suspended') ctx.resume();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(startFreq, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(endFreq, ctx.currentTime + duration);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + duration);
+    } catch(e) { /* silence errors */ }
+  }
+
+  function playNext() { playTone(520, 780, 0.12); }
+  function playPrev() { playTone(580, 400, 0.15); }
+  function playReveal() {
+    playTone(400, 600, 0.1);
+    setTimeout(function() { playTone(600, 900, 0.15); }, 120);
+  }
+
+  // Question slides (0-indexed): 13, 15, 17 → answer reveals when navigating from these
+  var questionSlides = [13, 15, 17];
+
+  // --- Audio playback ---
+  var currentAudio = null;
+  var currentAudioBtn = null;
+
+  function stopCurrentAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      if (currentAudioBtn) currentAudioBtn.classList.remove('playing');
+      currentAudio = null;
+      currentAudioBtn = null;
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.audio-btn');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var src = btn.getAttribute('data-audio');
+    if (!src) return;
+    if (currentAudioBtn === btn && currentAudio && !currentAudio.paused) {
+      stopCurrentAudio();
+      return;
+    }
+    stopCurrentAudio();
+    var audio = new Audio(src);
+    currentAudio = audio;
+    currentAudioBtn = btn;
+    btn.classList.add('playing');
+    audio.addEventListener('ended', function() {
+      btn.classList.remove('playing');
+      currentAudio = null;
+      currentAudioBtn = null;
+    });
+    audio.addEventListener('error', function() {
+      btn.classList.remove('playing');
+      currentAudio = null;
+      currentAudioBtn = null;
+    });
+    audio.play();
+  });
+
+  // --- Slide navigation ---
+  function goTo(index, direction) {
+    if (index < 0 || index >= totalSlides || index === current) return;
+
+    stopCurrentAudio();
+
+    var oldSlide = slides[current];
+    var newSlide = slides[index];
+
+    oldSlide.classList.remove('active');
+    if (direction === 'next') {
+      oldSlide.classList.add('exit-left');
+    }
+
+    if (direction === 'prev') {
+      newSlide.style.transform = 'translateX(-60px)';
+      newSlide.offsetHeight;
+      newSlide.style.transform = '';
+    }
+    newSlide.classList.remove('exit-left');
+    newSlide.classList.add('active');
+    newSlide.removeAttribute('inert');
+    newSlide.setAttribute('aria-hidden', 'false');
+    oldSlide.setAttribute('aria-hidden', 'true');
+
+    current = index;
+    updateUI();
+
+    var heading = newSlide.querySelector('h1, h2');
+    if (heading) {
+      setTimeout(function() { heading.focus(); }, 100);
+    }
+
+    setTimeout(function() {
+      oldSlide.classList.remove('exit-left');
+      oldSlide.setAttribute('inert', '');
+    }, 600);
+  }
+
+  function goNext() {
+    if (current < totalSlides - 1) {
+      if (questionSlides.indexOf(current) !== -1) {
+        playReveal();
+      } else {
+        playNext();
+      }
+      goTo(current + 1, 'next');
+    }
+  }
+
+  function goPrev() {
+    if (current > 0) {
+      playPrev();
+      goTo(current - 1, 'prev');
+    }
+  }
+
+  function updateUI() {
+    counter.textContent = (current + 1) + ' / ' + totalSlides;
+    progressBar.style.width = ((current + 1) / totalSlides * 100) + '%';
+    announcer.textContent = '슬라이드 ' + (current + 1) + ' / ' + totalSlides;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === totalSlides - 1;
+  }
+
+  // --- Button click handlers ---
+  prevBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    goPrev();
+  });
+
+  nextBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    goNext();
+  });
+
+  // --- Keyboard navigation ---
+  document.addEventListener('keydown', function(e) {
+    var tag = e.target.tagName.toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+
+    if (e.target.classList && e.target.classList.contains('audio-btn')) {
+      if (e.key === 'Enter' || e.key === ' ') return;
+    }
+
+    switch(e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        goNext();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        goPrev();
+        break;
+      case 'Enter':
+        if (e.target === prevBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          goPrev();
+        } else if (e.target === nextBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          goNext();
+        } else {
+          e.preventDefault();
+          goNext();
+        }
+        break;
+      case 'Backspace':
+        e.preventDefault();
+        goPrev();
+        break;
+    }
+  });
+
+  prevBtn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      goPrev();
+    }
+  });
+
+  nextBtn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      goNext();
+    }
+  });
+
+  // Initial state
+  slides.forEach(function(slide, i) {
+    if (i !== 0) {
+      slide.setAttribute('inert', '');
+      slide.setAttribute('aria-hidden', 'true');
+    }
+  });
+  updateUI();
+})();
+</script>
+</body>
+</html>
